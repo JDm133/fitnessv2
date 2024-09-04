@@ -9,7 +9,7 @@ const sesja = (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, 'secretkey');
-        req.user = decoded.userId;
+        req.user = decoded.userId; // Ustawienie ID użytkownika
         next();
     } catch (err) {
         res.status(401).json({ message: 'Token jest nieprawidłowy' });
@@ -17,3 +17,4 @@ const sesja = (req, res, next) => {
 };
 
 module.exports = sesja;
+
