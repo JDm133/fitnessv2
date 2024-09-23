@@ -4,7 +4,8 @@ const authRoutes = require('./routes/auth');
 const cors = require('cors'); // Importowanie pakietu cors
 
 const app = express();
-
+const workoutRoutes = require('./routes/workouts');
+app.use('/workouts', workoutRoutes);
 // Używanie CORS
 app.use(cors());
 

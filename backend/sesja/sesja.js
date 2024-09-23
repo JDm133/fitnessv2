@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 
+
+
 const sesja = (req, res, next) => {
     const token = req.header('x-auth-token');
 
@@ -8,7 +10,8 @@ const sesja = (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, 'secretkey');
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
         req.user = decoded.userId; // Ustawienie ID użytkownika
         next();
     } catch (err) {

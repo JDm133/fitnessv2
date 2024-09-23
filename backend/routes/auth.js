@@ -78,7 +78,8 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Nieprawidłowe hasło' });
         }
 
-        const token = jwt.sign({ userId: user._id }, 'secretkey', { expiresIn: '10m' });
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
 
         res.json({ token });
     } catch (error) {
